@@ -1,0 +1,1 @@
+{"claim": "The IP responsible for the obfuscated malicious requests is 10.12.19.134.", "confidence": "high", "evidence": ["cmd-001", "cmd-002", "cmd-003", "cmd-004"], "status": "supported"}

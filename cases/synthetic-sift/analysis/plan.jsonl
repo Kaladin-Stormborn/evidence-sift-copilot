@@ -1,0 +1,5 @@
+{"command_id": "cmd-001", "goal": "Identify suspicious authentication events.", "reason": "Authentication success after repeated failure is a common intrusion pivot.", "step": 1, "tool": "grep_file"}
+{"command_id": "cmd-002", "goal": "Correlate authentication source with web activity.", "reason": "Shared source IP across auth and web logs strengthens the timeline.", "step": 2, "tool": "grep_file"}
+{"command_id": "cmd-003", "goal": "Find suspicious post-login process activity.", "reason": "Process evidence can confirm whether the login led to execution.", "step": 3, "tool": "suspicious_processes"}
+{"command_id": "cmd-004", "goal": "Check whether suspicious files match known-bad hashes.", "reason": "Hash matches are deterministic evidence and should outrank prose inference.", "step": 4, "tool": "hash_lookup"}
+{"command_id": "cmd-005", "goal": "Self-check unsupported conclusions before final report.", "reason": "Attribution and exfiltration require evidence not present in this case.", "step": 5, "tool": "claim_guard"}

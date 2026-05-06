@@ -1,0 +1,6 @@
+{"claim": "The source IP 185.199.110.153 appears in failed SSH attempts and a later successful deploy login.", "confidence": "high", "evidence": ["cmd-001:auth.log:2-5"], "next_step": "", "status": "supported"}
+{"claim": "The same source IP accessed admin upload endpoints around the successful login window.", "confidence": "medium", "evidence": ["cmd-002:web.log:2-4"], "next_step": "", "status": "supported"}
+{"claim": "Post-login process activity includes /tmp execution, curl download, http.server, and a beacon-like payload argument.", "confidence": "high", "evidence": ["cmd-003:processes.txt:2-5"], "next_step": "", "status": "supported"}
+{"claim": "The payload at /tmp/.cache/payload matches the synthetic-linux-beacon known-bad hash.", "confidence": "high", "evidence": ["cmd-004:hashes.csv:/tmp/.cache/payload"], "next_step": "", "status": "supported"}
+{"claim": "The intrusion can be attributed to a named real-world threat actor.", "confidence": "none", "evidence": [], "next_step": "Need external intelligence or additional artifacts. This harness refuses attribution from local logs alone.", "status": "unsupported"}
+{"claim": "Data exfiltration occurred.", "confidence": "low", "evidence": [], "next_step": "Need network capture, proxy logs, or endpoint telemetry showing outbound transfer volume/content.", "status": "needs_artifact"}

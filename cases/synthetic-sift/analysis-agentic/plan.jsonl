@@ -1,0 +1,5 @@
+{"goal": "Identify suspicious authentication attempts and source IPs.", "planner": "codex:gpt-5.5", "reason": "Auth log previews show failed admin SSH attempts from an external IP.", "step": 1, "tool": "grep_auth"}
+{"goal": "Correlate suspicious source IPs with web access and upload activity.", "planner": "codex:gpt-5.5", "reason": "Web log previews show the same external IP accessing admin paths and posting to upload.", "step": 2, "tool": "grep_web"}
+{"goal": "Find suspicious runtime activity tied to temporary paths or unusual services.", "planner": "codex:gpt-5.5", "reason": "Process preview shows execution from /tmp and a Python HTTP server serving a cache directory.", "step": 3, "tool": "process_triage"}
+{"goal": "Compare collected file hashes against known-bad indicators.", "planner": "codex:gpt-5.5", "reason": "Case hashes include a payload hash that appears in the known-bad hash inventory.", "step": 4, "tool": "hash_lookup"}
+{"goal": "Review conclusions and downgrade unsupported claims.", "planner": "codex:gpt-5.5", "reason": "Final check keeps findings tied to deterministic evidence and avoids overclaiming.", "step": 5, "tool": "claim_guard"}

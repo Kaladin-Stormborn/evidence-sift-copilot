@@ -1,0 +1,7 @@
+2026-05-05T08:12:01Z host-7 sshd[1021]: Accepted publickey for analyst from 10.0.0.12 port 51220 ssh2
+2026-05-05T08:42:18Z host-7 sshd[1188]: Failed password for invalid user admin from 185.199.110.153 port 48912 ssh2
+2026-05-05T08:42:22Z host-7 sshd[1189]: Failed password for invalid user admin from 185.199.110.153 port 48914 ssh2
+2026-05-05T08:42:27Z host-7 sshd[1190]: Failed password for invalid user admin from 185.199.110.153 port 48917 ssh2
+2026-05-05T08:43:04Z host-7 sshd[1202]: Accepted password for deploy from 185.199.110.153 port 48928 ssh2
+2026-05-05T08:44:31Z host-7 sudo[1220]: deploy : TTY=pts/1 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/bash /tmp/update.sh
+2026-05-05T08:45:02Z host-7 usermod[1228]: change user deploy shell from /bin/bash to /bin/sh

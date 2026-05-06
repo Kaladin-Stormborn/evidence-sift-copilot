@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "grep_auth",
+    "goal": "Identify suspicious authentication attempts and source IPs.",
+    "reason": "Auth log previews show failed admin SSH attempts from an external IP."
+  },
+  {
+    "tool": "grep_web",
+    "goal": "Correlate suspicious source IPs with web access and upload activity.",
+    "reason": "Web log previews show the same external IP accessing admin paths and posting to upload."
+  },
+  {
+    "tool": "process_triage",
+    "goal": "Find suspicious runtime activity tied to temporary paths or unusual services.",
+    "reason": "Process preview shows execution from /tmp and a Python HTTP server serving a cache directory."
+  },
+  {
+    "tool": "hash_lookup",
+    "goal": "Compare collected file hashes against known-bad indicators.",
+    "reason": "Case hashes include a payload hash that appears in the known-bad hash inventory."
+  },
+  {
+    "tool": "claim_guard",
+    "goal": "Review conclusions and downgrade unsupported claims.",
+    "reason": "Final check keeps findings tied to deterministic evidence and avoids overclaiming."
+  }
+]
+
+---
+model: gpt-5.5
+wall_ms: 10436
+token_usage_available: false

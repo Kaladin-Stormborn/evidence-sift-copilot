@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "detect_obfuscation",
+    "goal": "Identify requests containing encoded paths, traversal patterns, or script-like malicious indicators.",
+    "reason": "The sample includes a base64-looking path and a traversal-style file parameter that should be flagged as obfuscated malicious web requests."
+  },
+  {
+    "tool": "decode_payloads",
+    "goal": "Decode suspicious encoded request components to reveal their intended target or command.",
+    "reason": "The path segment Li4vLi4vLi4vLi4vYmluL2Jhc2g= appears base64-encoded and should be decoded to confirm malicious intent."
+  },
+  {
+    "tool": "score_source_ips",
+    "goal": "Aggregate suspicious request evidence by source IP and rank the responsible source.",
+    "reason": "Both suspicious requests appear to originate from 10.12.19.134, so scoring by IP should identify the responsible host."
+  },
+  {
+    "tool": "claim_guard",
+    "goal": "Verify that the final IP attribution is supported only by the detected and decoded log evidence.",
+    "reason": "This prevents unsupported attribution to benign IPs that only requested normal pages."
+  }
+]

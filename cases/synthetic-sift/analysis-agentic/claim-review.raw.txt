@@ -1,0 +1,55 @@
+[
+  {
+    "claim": "The source IP 185.199.110.153 appears in failed SSH attempts and a later successful deploy login.",
+    "initial_status": "supported",
+    "final_status": "supported",
+    "correction": "No correction needed; keep as log-observed activity only.",
+    "evidence_basis": ["cmd-001:auth.log:2-5"],
+    "missing_artifacts": []
+  },
+  {
+    "claim": "The same source IP accessed admin upload endpoints around the successful login window.",
+    "initial_status": "supported",
+    "final_status": "supported",
+    "correction": "No correction needed; do not infer upload success or exploitation without response/body artifacts.",
+    "evidence_basis": ["cmd-002:web.log:2-4"],
+    "missing_artifacts": ["HTTP response codes/details", "uploaded file artifacts", "application logs"]
+  },
+  {
+    "claim": "Post-login process activity includes /tmp execution, curl download, http.server, and a beacon-like payload argument.",
+    "initial_status": "supported",
+    "final_status": "supported_with_limits",
+    "correction": "Observed suspicious process activity and beacon-like argument; do not assert active C2 without network evidence.",
+    "evidence_basis": ["cmd-003:processes.txt:2-5"],
+    "missing_artifacts": ["network connections", "DNS logs", "proxy logs", "packet capture"]
+  },
+  {
+    "claim": "The payload at /tmp/.cache/payload matches the synthetic-linux-beacon known-bad hash.",
+    "initial_status": "supported",
+    "final_status": "supported",
+    "correction": "No correction needed if the known-bad hash source is in scope.",
+    "evidence_basis": ["cmd-004:hashes.csv:/tmp/.cache/payload"],
+    "missing_artifacts": ["known-bad hash reference source, if not already provided"]
+  },
+  {
+    "claim": "The intrusion can be attributed to a named real-world threat actor.",
+    "initial_status": "unsupported",
+    "final_status": "unsupported",
+    "correction": "No actor attribution from local logs alone.",
+    "evidence_basis": [],
+    "missing_artifacts": ["external intelligence", "campaign overlap evidence", "actor-specific infrastructure or tooling attribution"]
+  },
+  {
+    "claim": "Data exfiltration occurred.",
+    "initial_status": "needs_artifact",
+    "final_status": "unsupported",
+    "correction": "Exfiltration is not established without outbound transfer artifacts.",
+    "evidence_basis": [],
+    "missing_artifacts": ["network capture", "proxy logs", "endpoint telemetry", "cloud/storage access logs", "transfer volume or content evidence"]
+  }
+]
+
+---
+model: gpt-5.5
+wall_ms: 17957
+token_usage_available: false
